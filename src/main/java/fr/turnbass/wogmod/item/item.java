@@ -1,13 +1,11 @@
-package fr.tunbass.wogmod.item;
+package fr.turnbass.wogmod.item;
 
-import fr.tunbass.wogmod.block.Modblock;
-import fr.tunbass.wogmod.item.custom.coke;
-import fr.tunbass.wogmod.item.custom.lsd;
-import fr.tunbass.wogmod.item.custom.meth;
-import fr.tunbass.wogmod.item.custom.steroides;
-import fr.tunbass.wogmod.main;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
+import fr.turnbass.wogmod.block.Modblock;
+import fr.turnbass.wogmod.item.custom.coke;
+import fr.turnbass.wogmod.item.custom.lsd;
+import fr.turnbass.wogmod.item.custom.meth;
+import fr.turnbass.wogmod.item.custom.steroides;
+import fr.turnbass.wogmod.main;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -17,9 +15,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.openjdk.nashorn.internal.codegen.Compiler;
-
-import static fr.tunbass.wogmod.main.MOD_ID;
 
 public class item {
     public static final DeferredRegister<Item> ITEMS =

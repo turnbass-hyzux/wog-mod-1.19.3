@@ -1,24 +1,21 @@
-package fr.tunbass.wogmod;
+package fr.turnbass.wogmod;
 
 
-import com.google.common.eventbus.Subscribe;
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.logging.LogUtils;
-import fr.tunbass.wogmod.block.Modblock;
-import fr.tunbass.wogmod.item.item;
+import fr.turnbass.wogmod.block.Modblock;
+import fr.turnbass.wogmod.event.creativetab;
+import fr.turnbass.wogmod.item.item;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.IExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 @Mod(main.MOD_ID)
@@ -28,6 +25,8 @@ public class main {
 
     public main() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
         modEventBus.addListener(this::commonSetup);
         item.register(modEventBus);
         Modblock.register(modEventBus);
@@ -36,8 +35,16 @@ public class main {
 
 
     }
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent e) {
+    }    private void onClientSetup(final FMLCommonSetupEvent e) {
+        e.enqueueWork(this::updateTitle);
     }
+
+    private void updateTitle() {
+        final Window window = Minecraft.getInstance().getWindow();
+        window.setTitle("WoG 1.19.3");
+    };
+
     private void addcreative(CreativeModeTabEvent.BuildContents event) {
         if(event.getTab() == creativetab.WOG_TAB){
 
@@ -60,4 +67,5 @@ public class main {
             event.accept(Modblock.POT_STAGE_FINAL);
         }
     }
+
 }

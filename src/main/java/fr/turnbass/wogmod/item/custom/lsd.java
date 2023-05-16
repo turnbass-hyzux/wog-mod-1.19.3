@@ -1,4 +1,4 @@
-package fr.tunbass.wogmod.item.custom;
+package fr.turnbass.wogmod.item.custom;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

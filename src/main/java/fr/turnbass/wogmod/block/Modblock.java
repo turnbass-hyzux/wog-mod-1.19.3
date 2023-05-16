@@ -1,7 +1,7 @@
-package fr.tunbass.wogmod.block;
+package fr.turnbass.wogmod.block;
 
-import fr.tunbass.wogmod.item.item;
-import fr.tunbass.wogmod.main;
+import fr.turnbass.wogmod.item.item;
+import fr.turnbass.wogmod.main;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
