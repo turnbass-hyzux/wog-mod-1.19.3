@@ -3,7 +3,7 @@ package fr.tunbass.wogmod;
 
 import com.google.common.eventbus.Subscribe;
 import com.mojang.logging.LogUtils;
-import fr.tunbass.wogmod.block.block;
+import fr.tunbass.wogmod.block.Modblock;
 import fr.tunbass.wogmod.item.item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +30,7 @@ public class main {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         item.register(modEventBus);
-        block.register(modEventBus);
+        Modblock.register(modEventBus);
         modEventBus.addListener(this::addcreative);
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -44,13 +44,20 @@ public class main {
             //item
             event.accept(item.WEED);
             event.accept(item.WEED_SEC);
+            event.accept(item.LSD);
+            event.accept(item.COKE);
+            event.accept(item.BOISSONS_SURVITAMINEES);
+            event.accept(item.BROWNIES_DE_WEED);
+            event.accept(item.METH);
+            event.accept(item.STEROIDES);
+            event.accept(item.VODKA);
             event.accept(item.POT_ITEM);
             event.accept(item.POT_ITEM_STAGE_FINAL);
 
 
             //block
-            event.accept(block.POT);
-            event.accept(block.POT_STAGE_FINAL);
+            event.accept(Modblock.POT);
+            event.accept(Modblock.POT_STAGE_FINAL);
         }
     }
 }
